@@ -1,7 +1,7 @@
 # Личный проект «Что посмотреть» [![Build status][travis-image]][travis-url]
 
 * Студент: [Dmitry Ordin](https://up.htmlacademy.ru/react/5/user/122528).
-* Наставник: `Неизвестно`.
+* Наставник: [Александр Белокур](https://htmlacademy.ru/profile/alex-belokur).
 
 ---
 
