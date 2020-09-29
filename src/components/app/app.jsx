@@ -5,7 +5,6 @@ import propTypes from "prop-types";
 
 const App = (probs) => {
   const {title} = probs;
-  console.log( typeof title);
   return (
     <IndexBody filmsData = {title}/>
   );
