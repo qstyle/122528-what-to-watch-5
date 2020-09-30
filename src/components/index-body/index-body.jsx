@@ -1,8 +1,8 @@
 import React from 'react';
 import propTypes from "prop-types";
 
-const IndexBody = (probs) => {
-  const {filmName, dataRelise, genre} = probs.filmsData;
+const IndexBody = (props) => {
+  const {filmName, dateRelease, genre} = props.filmsData;
   return (
     <React.Fragment>
       <section className="movie-card">
@@ -38,7 +38,7 @@ const IndexBody = (probs) => {
               <h2 className="movie-card__title">{filmName}</h2>
               <p className="movie-card__meta">
                 <span className="movie-card__genre">{genre}</span>
-                <span className="movie-card__year">{dataRelise}</span>
+                <span className="movie-card__year">{dateRelease}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -307,8 +307,9 @@ const IndexBody = (probs) => {
 };
 
 IndexBody.propTypes = {
+  filmsData: propTypes.object,
   filmName: propTypes.string,
-  dataRelise: propTypes.number,
+  dateRelease: propTypes.number,
   genre: propTypes.string
 };
 

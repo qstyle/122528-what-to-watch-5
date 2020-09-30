@@ -4,11 +4,11 @@ import App from "./components/app/app";
 
 const FilmData = {
   filmName: `The Grand Budapest Hotel`,
-  dataRelise: `2014`,
+  dateRelease: `2014`,
   genre: `drama`
 };
 
 ReactDOM.render(
-    <App title = {FilmData}/>,
+    <App appData = {FilmData}/>,
     document.querySelector(`#root`)
 );
