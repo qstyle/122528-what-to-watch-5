@@ -1,7 +1,7 @@
 import React from 'react';
 import propTypes from "prop-types";
 
-const IndexBody = (props) => {
+const MainPage = (props) => {
   const {filmName, dateRelease, genre} = props.filmsData;
   return (
     <React.Fragment>
@@ -306,7 +306,7 @@ const IndexBody = (props) => {
   );
 };
 
-IndexBody.propTypes = {
+MainPage.propTypes = {
   filmsData: propTypes.object,
   filmName: propTypes.string,
   dateRelease: propTypes.number,
@@ -314,4 +314,4 @@ IndexBody.propTypes = {
 };
 
 
-export default IndexBody;
+export default MainPage;
