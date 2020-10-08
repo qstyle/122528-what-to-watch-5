@@ -23,13 +23,13 @@ const App = (props) => {
         <Route exact path="/mylist">
           <MyListPage />
         </Route>
-        <Route exact path="/films">
+        <Route exact path="/films/:id/review">
           <FilmPageReviews />
         </Route>
-        <Route exact path="/film">
+        <Route exact path="/films/:id">
           <FilmPage />
         </Route>
-        <Route exact path="/player">
+        <Route exact path="/player/:id">
           <PlayerPage />
         </Route>
       </Switch>
@@ -38,7 +38,7 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  appData: propTypes.object.isRequired
+  appData: propTypes.array.isRequired
 };
 
 export default App;
