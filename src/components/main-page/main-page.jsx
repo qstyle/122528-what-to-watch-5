@@ -1,8 +1,10 @@
 import React from 'react';
 import propTypes from "prop-types";
 import FilmList from "../film-list/film-list.jsx";
+import {Link} from 'react-router-dom';
 
 const MainPage = (props) => {
+  const {onPlayButtonClick} = props;
   const {filmName, filmGenre, years} = props.filmsData[0];
   return (
     <React.Fragment>
@@ -23,9 +25,11 @@ const MainPage = (props) => {
           </div>
 
           <div className="user-block">
-            <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-            </div>
+            <Link to="/mylist">
+              <div className="user-block__avatar" to="/mylist">
+                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+              </div>
+            </Link>
           </div>
         </header>
 
@@ -43,7 +47,7 @@ const MainPage = (props) => {
               </p>
 
               <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button">
+                <button className="btn btn--play movie-card__button" type="button" onClick={onPlayButtonClick}>
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                   </svg>
@@ -122,6 +126,7 @@ const MainPage = (props) => {
 };
 
 MainPage.propTypes = {
+  onPlayButtonClick: propTypes.func,
   filmsData: propTypes.array,
   filmName: propTypes.string,
   dateRelease: propTypes.number,

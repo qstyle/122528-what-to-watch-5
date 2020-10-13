@@ -15,12 +15,14 @@ class FilmList extends PureComponent {
   render() {
     const filmsArray = this.props.filmData;
     return (
-      <div className="catalog__movies-list">
-        {filmsArray.map((films)=>{
-          return filmCard(films, this.onMouse, this.leaveMouse);
+      <React.Fragment>
+        <div className="catalog__movies-list">
+          {filmsArray.map((films)=>{
+            return filmCard(films, this.onMouse, this.leaveMouse);
 
-        })}
-      </div>
+          })}
+        </div>
+      </React.Fragment>
     );
   }
 

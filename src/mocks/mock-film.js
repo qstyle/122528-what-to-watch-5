@@ -16,6 +16,13 @@ export default function filmMock() {
   return film;
 }
 function mocks() {
+  const reviewMock = {
+    name: generateReviewName(),
+    lastName: generateLastReviewName(),
+    reviewRating: `${generateRandomNumber(0, 10)},${generateRandomNumber(1, 10)}`,
+    reviewText: generateDiscription(),
+  };
+
   return {
     filmName: generateFilmName(),
     years: generateYear(),
@@ -25,11 +32,21 @@ function mocks() {
     director: generateDirector(),
     starring: generateStarring(),
     discription: generateDiscription(),
-    id: generateRandomNumber(100000, 900000)
-
+    id: generateRandomNumber(100000, 900000),
+    review: reviewMock,
   };
 }
+function generateLastReviewName() {
+  const films = [`lastName1`, `lastName2`, `lastName3`, `lastName4`, `lastName5`, `lastName6`, `lastName7`];
+  const randomIndex = generateRandomNumber(0, 6);
+  return films[randomIndex];
+}
 
+function generateReviewName() {
+  const films = [`name1`, `name2`, `name3`, `name4`, `name5`, `name6`, `name7`];
+  const randomIndex = generateRandomNumber(0, 6);
+  return films[randomIndex];
+}
 function generateFilmName() {
   const films = [`filmName1`, `filmName2`, `filmName3`, `filmName4`, `filmName5`, `filmName6`, `filmName7`];
   const randomIndex = generateRandomNumber(0, 6);
@@ -43,7 +60,7 @@ function generateAvatar() {
 }
 
 function generateGenre() {
-  const geners = [`drama`, `action`, `detectiv`, `gener1`, `gener2`, `gener3`, `gener4`];
+  const geners = [`drama`, `action`, `detective`, `gener1`, `gener2`, `gener3`, `gener4`];
   const randomIndex = generateRandomNumber(0, 6);
   return geners[randomIndex];
 }

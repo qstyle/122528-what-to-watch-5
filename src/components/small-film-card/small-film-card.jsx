@@ -1,18 +1,23 @@
 import React from "react";
 import propTypes from "prop-types";
+import {Link} from "react-router-dom";
 
-const smallFilmCard = (props, handleClick, leaveMouse)=>{
+const smallFilmCard = (props, handleClick)=>{
   const {filmName, filmAvatar, id} = props;
-  return (<React.Fragment>
-    <article className="small-movie-card catalog__movies-card" onPointerLeave = {() =>leaveMouse()} onPointerEnter={() => handleClick(id)} >
-      <div className="small-movie-card__image">
-        <img src={`img/${filmAvatar}.jpg`} alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
-      </div>
-      <h3 className="small-movie-card__title">
-        <a className="small-movie-card__link" href="movie-page.html">{filmName}</a>
-      </h3>
-    </article>
-  </React.Fragment>);
+  return (
+    <React.Fragment>
+      <article className="small-movie-card catalog__movies-card" onPointerEnter={() => handleClick(id)}>
+        <Link to="/films/:id">
+          <div className="small-movie-card__image">
+            <img src={`img/${filmAvatar}.jpg`} alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
+          </div>
+        </Link>
+        <h3 className="small-movie-card__title">
+          <Link className="small-movie-card__link" to="/films/:id">{filmName}</Link>
+        </h3>
+      </article>
+    </React.Fragment>
+  );
 
 
 };
@@ -22,5 +27,5 @@ export default smallFilmCard;
 smallFilmCard.propTypes = {
   filmAvatar: propTypes.string,
   filmName: propTypes.string,
-  id: propTypes.number,
+  id: propTypes.number
 };

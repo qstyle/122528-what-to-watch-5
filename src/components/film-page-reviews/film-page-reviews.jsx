@@ -1,23 +1,27 @@
 import React from 'react';
+import propTypes from "prop-types";
+import {Link} from 'react-router-dom';
 
-const FilmPageReviews = ()=>{
+const FilmPageReviews = (props)=>{
+  const {filmName, years, filmAvatar, filmGenre} = props.filmsData;
+  const {name, lastName, reviewRating, reviewText} = props.filmsData.review;
   return (
     <React.Fragment>
       <section className="movie-card movie-card--full">
         <div className="movie-card__hero">
           <div className="movie-card__bg">
-            <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+            <img src={`img/${filmAvatar}.jpg`} alt="The Grand Budapest Hotel" />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
 
           <header className="page-header movie-card__head">
             <div className="logo">
-              <a href="main.html" className="logo__link">
+              <Link to="/" className="logo__link">
                 <span className="logo__letter logo__letter--1">W</span>
                 <span className="logo__letter logo__letter--2">T</span>
                 <span className="logo__letter logo__letter--3">W</span>
-              </a>
+              </Link>
             </div>
 
             <div className="user-block">
@@ -29,10 +33,10 @@ const FilmPageReviews = ()=>{
 
           <div className="movie-card__wrap">
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">The Grand Budapest Hotel</h2>
+              <h2 className="movie-card__title">{filmName}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">Drama</span>
-                <span className="movie-card__year">2014</span>
+                <span className="movie-card__genre">{filmGenre}</span>
+                <span className="movie-card__year">{years}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -57,7 +61,7 @@ const FilmPageReviews = ()=>{
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+              <img src={`img/${filmAvatar}.jpg`} alt="The Grand Budapest Hotel poster" width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">
@@ -77,83 +81,17 @@ const FilmPageReviews = ()=>{
 
               <div className="movie-card__reviews movie-card__row">
                 <div className="movie-card__reviews-col">
-                  <div className="review">
-                    <blockquote className="review__quote">
-                      <p className="review__text">Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director`s funniest and most exquisitely designed movies in years.</p>
-
-                      <footer className="review__details">
-                        <cite className="review__author">Kate Muir</cite>
-                        <time className="review__date" dateTime="2016-12-24">December 24, 2016</time>
-                      </footer>
-                    </blockquote>
-
-                    <div className="review__rating">8,9</div>
-                  </div>
-
-                  <div className="review">
-                    <blockquote className="review__quote">
-                      <p className="review__text">Anderson`s films are too precious for some, but for those of us willing to lose ourselves in them, they`re a delight. `The Grand Budapest Hotel` is no different, except that he has added a hint of gravitas to the mix, improving the recipe.</p>
-
-                      <footer className="review__details">
-                        <cite className="review__author">Bill Goodykoontz</cite>
-                        <time className="review__date" dateTime="2015-11-18">November 18, 2015</time>
-                      </footer>
-                    </blockquote>
-
-                    <div className="review__rating">8,0</div>
-                  </div>
-
-                  <div className="review">
-                    <blockquote className="review__quote">
-                      <p className="review__text">I didn`t find it amusing, and while I can appreciate the creativity, it`s an hour and 40 minutes I wish I could take back.</p>
-
-                      <footer className="review__details">
-                        <cite className="review__author">Amanda Greever</cite>
-                        <time className="review__date" dateTime="2015-11-18">November 18, 2015</time>
-                      </footer>
-                    </blockquote>
-
-                    <div className="review__rating">8,0</div>
-                  </div>
                 </div>
                 <div className="movie-card__reviews-col">
                   <div className="review">
                     <blockquote className="review__quote">
-                      <p className="review__text">The mannered, madcap proceedings are often delightful, occasionally silly, and here and there, gruesome and/or heartbreaking.</p>
-
+                      <p className="review__text">{reviewText}</p>
                       <footer className="review__details">
-                        <cite className="review__author">Matthew Lickona</cite>
+                        <cite className="review__author">{name} {lastName}</cite>
                         <time className="review__date" dateTime="2016-12-20">December 20, 2016</time>
                       </footer>
                     </blockquote>
-
-                    <div className="review__rating">7,2</div>
-                  </div>
-
-                  <div className="review">
-                    <blockquote className="review__quote">
-                      <p className="review__text">It is certainly a magical and childlike way of storytelling, even if the content is a little more adult.</p>
-
-                      <footer className="review__details">
-                        <cite className="review__author">Paula Fleri-Soler</cite>
-                        <time className="review__date" dateTime="2016-12-20">December 20, 2016</time>
-                      </footer>
-                    </blockquote>
-
-                    <div className="review__rating">7,6</div>
-                  </div>
-
-                  <div className="review">
-                    <blockquote className="review__quote">
-                      <p className="review__text">It is certainly a magical and childlike way of storytelling, even if the content is a little more adult.</p>
-
-                      <footer className="review__details">
-                        <cite className="review__author">Paula Fleri-Soler</cite>
-                        <time className="review__date" dateTime="2016-12-20">December 20, 2016</time>
-                      </footer>
-                    </blockquote>
-
-                    <div className="review__rating">7,0</div>
+                    <div className="review__rating">{reviewRating}</div>
                   </div>
                 </div>
               </div>
@@ -169,37 +107,10 @@ const FilmPageReviews = ()=>{
           <div className="catalog__movies-list">
             <article className="small-movie-card catalog__movies-card">
               <div className="small-movie-card__image">
-                <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
+                <img src={`img/${filmAvatar}.jpg`} alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
               </div>
               <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">Fantastic Beasts: The Crimes of Grindelwald</a>
-              </h3>
-            </article>
-
-            <article className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img src="img/bohemian-rhapsody.jpg" alt="Bohemian Rhapsody" width="280" height="175" />
-              </div>
-              <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">Bohemian Rhapsody</a>
-              </h3>
-            </article>
-
-            <article className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img src="img/macbeth.jpg" alt="Macbeth" width="280" height="175" />
-              </div>
-              <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">Macbeth</a>
-              </h3>
-            </article>
-
-            <article className="small-movie-card catalog__movies-card">
-              <div className="small-movie-card__image">
-                <img src="img/aviator.jpg" alt="Aviator" width="280" height="175" />
-              </div>
-              <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">Aviator</a>
+                <a className="small-movie-card__link" href="movie-page.html">{filmName}</a>
               </h3>
             </article>
           </div>
@@ -223,3 +134,16 @@ const FilmPageReviews = ()=>{
   );
 };
 export default FilmPageReviews;
+
+FilmPageReviews.propTypes = {
+  filmsData: propTypes.object.isRequired,
+  filmName: propTypes.string,
+  years: propTypes.number,
+  filmAvatar: propTypes.string,
+  filmGenre: propTypes.string,
+  name: propTypes.string,
+  lastName: propTypes.object,
+  reviewRating: propTypes.object,
+  reviewText: propTypes.object
+
+};
