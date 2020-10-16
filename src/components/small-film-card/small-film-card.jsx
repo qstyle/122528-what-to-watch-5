@@ -2,11 +2,13 @@ import React from "react";
 import propTypes from "prop-types";
 import {Link} from "react-router-dom";
 
-const smallFilmCard = (props, handleClick)=>{
-  const {filmName, filmAvatar, id} = props;
+const smallFilmCard = (props)=>{
+  const {filmName, filmAvatar, id} = props.film;
+  const {onMouse} = props;
+  const {leaveMouse} = props;
   return (
     <React.Fragment>
-      <article className="small-movie-card catalog__movies-card" onPointerEnter={() => handleClick(id)}>
+      <article className="small-movie-card catalog__movies-card" onPointerEnter={()=> onMouse(id)} onPointerLeave={()=>leaveMouse}>
         <Link to="/films/:id">
           <div className="small-movie-card__image">
             <img src={`img/${filmAvatar}.jpg`} alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />

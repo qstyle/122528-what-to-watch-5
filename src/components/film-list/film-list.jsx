@@ -1,5 +1,5 @@
 import React, {PureComponent} from "react";
-import filmCard from "../small-film-card/small-film-card";
+import FilmCard from "../small-film-card/small-film-card";
 import propTypes from "prop-types";
 
 class FilmList extends PureComponent {
@@ -13,14 +13,15 @@ class FilmList extends PureComponent {
   }
 
   render() {
-    const filmsArray = this.props.filmData;
+    const filmsArray = this.props.filmData.map((film, i)=>{
+      return <FilmCard key={i} film={film}
+        onMouse={this.onMouse}
+        leaveMouse={this.leaveMouse}/>;
+    });
     return (
       <React.Fragment>
         <div className="catalog__movies-list">
-          {filmsArray.map((films)=>{
-            return filmCard(films, this.onMouse, this.leaveMouse);
-
-          })}
+          {filmsArray}
         </div>
       </React.Fragment>
     );
@@ -40,3 +41,4 @@ export default FilmList;
 FilmList.propTypes = {
   filmData: propTypes.array,
 };
+
