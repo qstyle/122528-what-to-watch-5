@@ -16,7 +16,8 @@ class FilmList extends PureComponent {
     const filmsArray = this.props.filmData.map((film, i)=>{
       return <FilmCard key={i} film={film}
         onMouse={this.onMouse}
-        leaveMouse={this.leaveMouse}/>;
+        leaveMouse={this.leaveMouse}
+        playFilmId={this.state.hoverMouseId}/>;
     });
     return (
       <React.Fragment>
@@ -28,7 +29,8 @@ class FilmList extends PureComponent {
   }
 
   onMouse(id) {
-    this.setState({hoverMouseId: id});
+    setTimeout(()=>this.setState({hoverMouseId: id}), 1000)
+    ;
   }
 
   leaveMouse() {

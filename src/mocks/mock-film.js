@@ -32,6 +32,7 @@ function mocks() {
     director: generateDirector(),
     starring: generateStarring(),
     discription: generateDiscription(),
+    filmVideo: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     id: generateRandomNumber(100000, 900000),
     review: reviewMock,
   };
