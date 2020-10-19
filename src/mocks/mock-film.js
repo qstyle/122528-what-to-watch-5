@@ -32,7 +32,7 @@ function mocks() {
     director: generateDirector(),
     starring: generateStarring(),
     discription: generateDiscription(),
-    filmVideo: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    filmVideo: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     id: generateRandomNumber(100000, 900000),
     review: reviewMock,
   };

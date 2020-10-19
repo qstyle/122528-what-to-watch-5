@@ -1,42 +1,40 @@
 import propTypes from "prop-types";
 import React, {PureComponent} from "react";
 
-
 class VideoSmallcard extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.state = {
-      mouseIn: false
-    };
     this.videoPlayerNode = React.createRef();
   }
 
   playVideo() {
-    const {filmId} = this.props;
-    const {playFilmId} = this.props;
-    if (playFilmId === filmId) {
-      this.setState({mouseIn: true});
+    const {isHovered} = this.props;
+
+    if (this.videoPlayerNode.current === null) {
+      return;
+    }
+
+    if (isHovered) {
       this.videoPlayerNode.current.play();
     } else {
-      if (this.videoPlayerNode.current === null) {
-        return;
-      } else {
-        this.setState({mouseIn: false});
-        this.videoPlayerNode.current.pause();
-        this.videoPlayerNode.current.load();
-      }
+      this.videoPlayerNode.current.load();
     }
+  }
+
+  componentDidUpdate() {
+    this.playVideo();
   }
 
   render() {
     const {filmVideo, filmAvatar} = this.props;
-    this.playVideo();
     return (
       <React.Fragment>
-        <video ref={this.videoPlayerNode} poster={`img/${filmAvatar}.jpg`} muted
+        <video
+          ref={this.videoPlayerNode}
+          poster={`img/${filmAvatar}.jpg`}
           src={filmVideo}
           alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175"
+          muted
         />
       </React.Fragment>
     );
@@ -46,7 +44,8 @@ class VideoSmallcard extends PureComponent {
 
 VideoSmallcard.propTypes = {
   filmAvatar: propTypes.string,
-  filmVideo: propTypes.number,
+  isHovered: propTypes.bool,
+  filmVideo: propTypes.string,
   id: propTypes.number,
   filmId: propTypes.number,
   playFilmId: propTypes.number
