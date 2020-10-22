@@ -1,6 +1,7 @@
 import React, {PureComponent} from "react";
 import FilmCard from "../small-film-card/small-film-card";
 import propTypes from "prop-types";
+import {connect} from "react-redux";
 
 class FilmList extends PureComponent {
   constructor(props) {
@@ -13,9 +14,8 @@ class FilmList extends PureComponent {
     this.onMouse = this.onMouse.bind(this);
     this.leaveMouse = this.leaveMouse.bind(this);
   }
-
   render() {
-    const filmsArray = this.props.filmData.map((film, i)=>{
+    const filmsArray = this.props.film.map((film, i)=>{
       return <FilmCard
         key={i}
         film={film}
@@ -55,10 +55,16 @@ class FilmList extends PureComponent {
     }
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    film: state.appFilter,
+  };
+};
 
-export default FilmList;
+export default connect(mapStateToProps)(FilmList);
 
 FilmList.propTypes = {
   filmData: propTypes.array,
+  film: propTypes.array
 };
 

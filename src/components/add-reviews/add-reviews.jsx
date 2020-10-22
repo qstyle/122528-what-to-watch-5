@@ -1,5 +1,6 @@
 import React, {PureComponent} from "react";
 import propTypes from "prop-types";
+import {connect} from "react-redux";
 
 class AddReview extends PureComponent {
   constructor(props) {
@@ -23,7 +24,7 @@ class AddReview extends PureComponent {
 
 
   render() {
-    const {filmName, filmAvatar} = this.props.filmsData;
+    const {filmName, filmAvatar} = this.props.film;
     return (
       <section className="movie-card movie-card--full">
         <div className="movie-card__header">
@@ -96,10 +97,17 @@ class AddReview extends PureComponent {
       </section>);
   }
 }
-export default AddReview;
 
 AddReview.propTypes = {
   filmName: propTypes.string,
   filmAvatar: propTypes.string,
-  filmsData: propTypes.object
+  film: propTypes.object
 };
+
+const mapStateToProps = (state) => {
+  return {
+    film: state.appFilter[0],
+  };
+};
+
+export default connect(mapStateToProps)(AddReview);

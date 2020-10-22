@@ -1,9 +1,10 @@
 import propTypes from "prop-types";
 import React from 'react';
 import {Link} from "react-router-dom";
+import {connect} from "react-redux";
 
 const FilmsPage = (props)=>{
-  const {filmName, years, filmAvatar, filmGenre, rating, discription, director, starring} = props.filmsData;
+  const {filmName, years, filmAvatar, filmGenre, rating, discription, director, starring} = props.film;
   return (
     <React.Fragment>
       <section className="movie-card movie-card--full">
@@ -158,7 +159,7 @@ const FilmsPage = (props)=>{
     </React.Fragment>
   );
 };
-export default FilmsPage;
+
 
 FilmsPage.propTypes = {
   filmName: propTypes.string,
@@ -169,6 +170,13 @@ FilmsPage.propTypes = {
   discription: propTypes.string,
   director: propTypes.string,
   starring: propTypes.string,
-  filmsData: propTypes.object
+  film: propTypes.object
 
 };
+const mapStateToProps = (state) => {
+  return {
+    film: state.appFilter[0],
+  };
+};
+
+export default connect(mapStateToProps)(FilmsPage);

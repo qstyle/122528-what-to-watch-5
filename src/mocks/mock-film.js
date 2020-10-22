@@ -10,11 +10,14 @@ const FILM_COUNT = 8;
 
 export default function filmMock() {
   const film = [];
+
   for (let i = 0; i < FILM_COUNT; i++) {
     film.push(mocks());
   }
+
   return film;
 }
+
 function mocks() {
   const reviewMock = {
     name: generateReviewName(),
@@ -61,8 +64,8 @@ function generateAvatar() {
 }
 
 function generateGenre() {
-  const geners = [`drama`, `action`, `detective`, `gener1`, `gener2`, `gener3`, `gener4`];
-  const randomIndex = generateRandomNumber(0, 6);
+  const geners = [`drama`, `action`];
+  const randomIndex = generateRandomNumber(0, 1);
   return geners[randomIndex];
 }
 
