@@ -1,6 +1,6 @@
 import {extend} from "../utils/utils";
 import {ActionType} from "./action";
-import sortFilms from "../utils/sort-films";
+import {sortFilms} from "../utils/sort-films";
 import mocks from "../mocks/mock-film.js";
 
 const initialState = {

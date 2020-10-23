@@ -6,7 +6,7 @@ const generateRandomNumber = (randomMin, randomMax) => {
   }
   return randomValue;
 };
-const FILM_COUNT = 8;
+const FILM_COUNT = 20;
 
 export default function filmMock() {
   const film = [];

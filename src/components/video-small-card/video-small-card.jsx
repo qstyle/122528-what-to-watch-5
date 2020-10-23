@@ -33,7 +33,8 @@ class VideoSmallcard extends PureComponent {
           ref={this.videoPlayerNode}
           poster={`img/${filmAvatar}.jpg`}
           src={filmVideo}
-          alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175"
+          width="280"
+          height="175"
           muted
         />
       </React.Fragment>
