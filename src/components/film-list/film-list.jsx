@@ -2,6 +2,7 @@ import React, {PureComponent} from "react";
 import FilmCard from "../small-film-card/small-film-card";
 import propTypes from "prop-types";
 import {connect} from "react-redux";
+import ShowMoreButton from "../show-more-button/show-more-button.jsx";
 
 class FilmList extends PureComponent {
   constructor(props) {
@@ -9,13 +10,21 @@ class FilmList extends PureComponent {
 
     this.state = {
       hoverMouseId: 0,
+      filmRenderCount: 8,
     };
 
     this.onMouse = this.onMouse.bind(this);
     this.leaveMouse = this.leaveMouse.bind(this);
+    this.showMoreClickHandler = this.showMoreClickHandler.bind(this);
+    this.renderFilmArray = this.props.film;
   }
-  render() {
-    const filmsArray = this.props.film.map((film, i)=>{
+
+  showMoreClickHandler() {
+    this.setState({filmRenderCount: this.state.filmRenderCount + 8});
+  }
+  filmsArray() {
+    const filmsArrayCount = this.renderFilmArray.slice(0, this.state.filmRenderCount);
+    return filmsArrayCount.map((film, i)=>{
       return <FilmCard
         key={i}
         film={film}
@@ -24,11 +33,16 @@ class FilmList extends PureComponent {
         isHovered={this.state.hoverMouseId === film.id}
       />;
     });
+  }
+  render() {
     return (
       <React.Fragment>
         <div className="catalog__movies-list">
-          {filmsArray}
+          {this.filmsArray()}
         </div>
+        {this.state.filmRenderCount < 20 ?
+          <ShowMoreButton showMoreClickHandler={this.showMoreClickHandler}/> : ``
+        }
       </React.Fragment>
     );
   }
